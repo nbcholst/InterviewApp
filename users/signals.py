@@ -5,7 +5,7 @@ from .models import Profile
 
 #when a user is saved, then send this signal
 @receiver(post_save,sender=User)
-def create_profile(sender,instance,created,**kwargs):
+def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 

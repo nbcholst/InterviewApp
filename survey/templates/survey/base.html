@@ -67,6 +67,8 @@
                         <ul class="nav navbar-nav ml-auto">
                             {% if user.is_authenticated %}
                                 <li class="nav-item active"> <a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                                <img class = "rounded-circle article-img" src="{{ user.profile.image.url }}">
+                                <a class="mr-2" href="{% url 'user-surveys' user.username %}">{{ user.username }}</a>
                             {% else %}
                                 <li class="nav-item active"> <a class="nav-link" href="{% url 'login' %}">Login</a></li>
                             {% endif %}

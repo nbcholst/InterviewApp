@@ -1,0 +1,17 @@
+{% extends "landing/base.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <h2 class="article-title">{{ object.title }}</h2>
+    <small class="text-muted">{{ object.date_posted|date:'F d, Y' }}</small>
+    <p class="article-content">Description: {{ object.content }}</p>
+  </div>
+</article>
+
+    {%  for question in object.question_set.all %}
+<article class="media content-section">
+            <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
+</article>
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "survey/base.html" %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+        {% if object.author == user %}
+            <a class ="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'survey-share' object.id %}">Share</a>
+            <a class ="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'survey-update' object.id %}">Update</a>
+            <a class ="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'survey-delete' object.id %}">Delete</a>
+        {% endif %}
+    </div>
+    <h2 class="article-title">{{ object.title }}</h2>
+    <small class="text-muted">{{ object.date_posted|date:'F d, Y' }}</small>
+    <p class="article-content">Description: {{ object.content }}</p>
+  </div>
+</article>
+
+    {%  for question in object.question_set.all %}
+<article class="media content-section">
+    <div class="mt-0 mb-1">
+            <h2><a class=" article-title" href="#">{{ question.title }}</a></h2>
+    </div>
+    <div class="ml-3" style="float:right">
+         <ul class=" list-inline m-0">
+        <li class="list-inline-item">
+        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
+                title="Delete"><i class="fa fa-trash"></i></button>
+        </li>
+    </ul>
+    </div>
+</article>
+    {% endfor %}
+    Object ID: {{ object.id }}
+    <a class ="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'survey-question-add' object.id %}">Add Question</a>
+
+{% endblock content %}
