@@ -37,15 +37,22 @@
             </button>
 
             </div>
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="{% url 'survey-home' %}">Home</a>
-                </li>
-            </ul>
+
+         <!-- Sidebar content -->
 
             <ul class="list-unstyled CTAs">
-                <li><a href="{% url 'logout' %}" class="article">Sign Out</a></li>
-            </ul>
+            <li class="active">
+                <a href="{% url 'survey-home' %}">
+                    <i class="fas fa-home"></i>
+                    Home</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">
+                    <i class="fas fa-briefcase"></i>
+                    Log Out</a>
+            </li>
+        </ul>
+
         </nav>
 
         <!-- Page Content  -->
@@ -53,22 +60,18 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
+                <h2 class = "mx-auto">
+                   Survey Manager
+                </h2>
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
 
             <!-- Navbar Right Side -->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             {% if user.is_authenticated %}
-                                <li class="nav-item active"> <a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-                                <img class = "rounded-circle article-img" src="{{ user.profile.image.url }}">
-                                <a class="mr-2" href="{% url 'user-surveys' user.username %}">{{ user.username }}</a>
+                                <a class="nav-link" href="{% url 'profile' %}">
+                                <img class = "rounded-circle article-img" src="{{ user.profile.image.url }} ">
+                                </a>
                             {% else %}
                                 <li class="nav-item active"> <a class="nav-link" href="{% url 'login' %}">Login</a></li>
                             {% endif %}
@@ -92,29 +95,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Custom javascript -->
+    <script src="{% static 'survey/script.js' %}"></script>
+    <!-- JS cookie scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-            $('#sidebarCollapse_2').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-
-            $('#sidebarCollapse_3').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
 </body>
 
 </html>
