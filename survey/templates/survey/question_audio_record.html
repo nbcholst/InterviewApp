@@ -1,0 +1,22 @@
+{% extends "landing/base.html" %}
+{% block content %}
+
+      <div class="col-lg-12 text-center">
+        <h3>Question: "{{ object.title }}"</h3>
+
+          <div id='gUMArea'>
+              <button class="btn btn-default" id='gUMbtn'>Record Audio</button>
+          </div>
+          <div id='btns' style ='display:none'>
+              <button class="btn btn-default" id='start'>Start</button>
+              <button class="btn btn-default" id='stop'>Stop</button>
+          </div>
+            <br>
+          <div>
+              <ul class="list-unstyled" id='ul'></ul>
+          </div>
+
+        <a href="#" class="btn btn-default" id='save_data'>Save Data</a>
+
+    </div>
+{% endblock content %}

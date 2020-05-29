@@ -9,7 +9,9 @@ from .views import (
     SurveyDeleteView,
     SurveyShareView,
     QuestionCreateView,
-    QuestionDeleteView
+    QuestionDeleteView,
+    QuestionRecordView,
+    QuestionRecordSubmitView
                     )
 
 urlpatterns = [
@@ -22,4 +24,6 @@ urlpatterns = [
     path('survey/<int:pk>/share/', SurveyShareView.as_view(), name='survey-share'),
     path('survey/<int:pk>/new_question/', QuestionCreateView.as_view(), name='survey-question-add'),
     path('survey/<int:pk>/delete_question/', QuestionDeleteView.as_view(), name='survey-question-delete'),
+    path('survey/<int:pk>/record_question/', QuestionRecordView.as_view(), name='survey-question-record'),
+    path('survey/<int:pk>/record_submit_question/', views.QuestionRecordSubmitView, name='survey-question-submit-record')
 ]

@@ -23,14 +23,16 @@
     <div class="ml-3" style="float:right">
          <ul class=" list-inline m-0">
         <li class="list-inline-item">
+        <a href="{% url 'survey-question-delete' question.id %}">
+
         <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top"
                 title="Delete"><i class="fa fa-trash"></i></button>
+        </a>
         </li>
     </ul>
     </div>
 </article>
     {% endfor %}
-    Object ID: {{ object.id }}
     <a class ="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'survey-question-add' object.id %}">Add Question</a>
 
 {% endblock content %}

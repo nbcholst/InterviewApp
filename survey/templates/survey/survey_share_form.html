@@ -12,6 +12,8 @@
 <article class="media content-section">
             <h2><a class="article-title" href="#">{{ question.title }}</a></h2>
 </article>
+
+    <a class="lead" href="{% url 'survey-question-record' question.id %}">Record Answer</a>
     {% endfor %}
 
 {% endblock content %}
